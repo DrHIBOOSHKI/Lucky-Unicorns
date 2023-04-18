@@ -25,9 +25,24 @@ def yes_no(question_text):
 
 # function to display instructions
 def instructions():
-    print("**** How to Play *****")
     print()
-    print("The rules of the game will go here")
+    print(formatter("*", "How to Play"))
+    print()
+    print("Choose a starting amount to play with - must be between $1 and $10")
+    print()
+    print("Then press <enter> to play. You will get a random token which might"
+          "be a horse, a zebra, a donkey, or a unicorn.")
+    print()
+    print("It costs $1 to play each round but, depending on your prize, you"
+          "could win some of your money back. These are the payout amounts:\n"
+          "\tUnicorn: $5 (balance increases by $4\n"
+          "\tHorse: $0.50 (balance decreases by $0.50\n"
+          "\tZebra: $0.50 (balance decreases by $0.50\n"
+          "\tDonkey: $0.00 (balance decreases by $1\n")
+    print("\nSee if you can avoid donkeys, get unicorns, and finish with "
+          "more money than you started with.\n")
+
+    print("*" * 50)
     print()
 
 
@@ -77,7 +92,7 @@ def generate_token(balance):
     elif 6 <= number <= 36:
         token = "donkey"
         balance -= 1
-        print(formatter("#", "Congratulations, you got a donkey"))
+        print(formatter("#", "Unlucky, you got a donkey"))
         print()
 
     # in all other cases the token must be a horse or a zebra
@@ -87,14 +102,14 @@ def generate_token(balance):
         if number % 2 == 0:
             token = "zebra"
             balance -= 0.5
-            print(formatter("^", "Congratulations, you got a zebra"))
+            print(formatter("^", "You got a zebra"))
             print()
 
         # otherwise, set the token to horse
         else:
             token = "horse"
             balance -= .5
-            print(formatter("^", "Congratulations, you got a horse"))
+            print(formatter("^", "You got a horse"))
             print()
 
         # output
